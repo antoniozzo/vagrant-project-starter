@@ -1,0 +1,19 @@
+php_value upload_max_filesize 10M
+php_value post_max_size 10M
+
+php_value max_input_vars 5000
+php_value suhosin.get.max_vars 5000
+php_value suhosin.post.max_vars 5000
+php_value suhosin.request.max_vars 5000
+
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+
+# END WordPress

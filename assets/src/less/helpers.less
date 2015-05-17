@@ -1,0 +1,166 @@
+/*
+Clearfix
+
+It's a clearfix!
+
+Styleguide helpers.clearfix
+*/
+
+.clearfix {
+	.clearfix();
+}
+
+
+/*
+Floats
+
+Markup:
+<span class="right">Right</span>
+<span class="left">Left</span>
+
+Styleguide helpers.float
+*/
+
+.left {
+	&.left--mobile {
+		float: left;
+	}
+
+	@media @tabletUp {
+		float: left;
+	}
+}
+
+.right {
+	&.right--mobile {
+		float: right;
+	}
+
+	@media @tabletUp {
+		float: right;
+	}
+}
+
+
+/*
+Type helpers
+
+Styleguide helpers.type
+ */
+
+
+/*
+Weights
+
+Markup:
+<p class="strong">.strong</p>
+<p class="fat">.fat</p>
+<p class="chubby">.chubby</p>
+<p class="regular">.regular</p>
+<p class="thin">.thin</p>
+<p class="skinny">.skinny</p>
+
+Weight: 1
+
+Styleguide helpers.type.weight
+ */
+
+.strong {
+	font-weight: 700;
+}
+
+.fat {
+	font-weight: 600;
+}
+
+.chubby {
+	font-weight: 500;
+}
+
+.regular {
+	font-weight: 400;
+}
+
+.thin {
+	font-weight: 300;
+}
+
+.skinny {
+	font-weight: 200;
+}
+
+
+/*
+Swatches
+
+Markup:
+<p class="red">.red</p>
+<p class="blue">.blue</p>
+<p style="background-color: #666" class="white">.white</p>
+
+Weight: 2
+
+Styleguide helpers.type.swatch
+ */
+
+.red {
+	color: @swatchRed;
+}
+
+.blue {
+	color: @swatchBlue;
+}
+
+.white {
+	color: #fff;
+}
+
+
+/*
+Disablers
+
+Markup:
+<h6 class="no_heading">.no_heading</h6>
+<a href="#" class="no_link">.no_link</a>
+
+Weight: 3
+
+Styleguide helpers.type.disable
+ */
+
+.no_link {
+	color: inherit;
+	letter-spacing: 0;
+	text-decoration: none;
+}
+
+.no_heading {
+	margin-bottom: 0;
+}
+
+
+/*
+Misc
+
+Markup:
+<p class="uppercase">.uppercase</p>
+<p class="spaced">.spaced</p>
+<p class="center">.center</p>
+
+Weight: 100
+
+Styleguide helpers.type.misc
+ */
+
+.spaced {
+	letter-spacing: .15em;
+}
+
+.uppercase {
+	letter-spacing: .05em;
+	text-transform: uppercase;
+}
+
+.center {
+	text-align: center;
+}

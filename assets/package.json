@@ -1,0 +1,28 @@
+{
+	"name": "[name]",
+	"devDependencies": {
+		"browser-sync": "*",
+		"gulp": "*",
+		"gulp-concat": "*",
+		"gulp-ember-handlebars": "*",
+		"gulp-jshint": "*",
+		"gulp-less": "*",
+		"gulp-minify-css": "*",
+		"gulp-notify": "*",
+		"gulp-plumber": "*",
+		"gulp-rename": "*",
+		"gulp-rev": "*",
+		"gulp-rev-outdated": "*",
+		"gulp-rimraf": "*",
+		"gulp-shell": "*",
+		"gulp-sourcemaps": "*",
+		"gulp-svg-sprites": "*",
+		"gulp-svg2png": "*",
+		"gulp-svgmin": "*",
+		"gulp-uglify": "*",
+		"gulp-util": "*",
+		"jshint-stylish": "*",
+		"kss": "*",
+		"run-sequence": "*"
+	}
+}

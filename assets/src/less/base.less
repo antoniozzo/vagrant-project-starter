@@ -1,0 +1,87 @@
+*, *:after, *:before {
+	.box-sizing(border-box);
+}
+
+* > *:last-child {
+	margin-bottom: 0;
+}
+
+html {
+	height: 100%;
+	position: relative;
+
+	font-size: 10px;
+
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+
+body {
+	.size(100%);
+	min-width: 320px;
+
+	background-color: @swatchBody;
+	
+	color: @swatchFont;
+	font-family: @fontFamily;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 1.5;
+	text-rendering: optimizeLegibility;
+}
+
+
+/*
+Type
+
+Markup:
+<h1>Heading 1</h1>
+<h2>Heading 2</h2>
+<h3>Heading 3</h3>
+<h4>Heading 4</h4>
+<h5>Heading 5</h5>
+<p><strong>Paragraph:</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus consectetur, non mollitia, doloribus magnam, molestias voluptatum rerum eaque explicabo tempora recusandae deserunt odit. Dolorum quisquam rerum minus, ipsam doloribus illo.</p>
+<blockquote>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</blockquote>
+
+Styleguide base.type
+ */
+
+h1, h2, h3, h4, h5, h6, blockquote, iframe, label, p, pre, address, td, th, ul, ol, dl, dd, hr, table {
+	font-weight: inherit;
+	margin: 0 0 1.5em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin: 0 0 1.5em/2;
+
+	font-weight: 600;
+	line-height: 1.25;
+}
+
+h1, .h1 {
+	font-size: 3.2rem;
+}
+
+h2, .h2 {
+	font-size: 2.7rem;
+}
+
+h3, .h3 {
+	font-size: 2.2rem;
+}
+
+h4, .h4 {
+	font-size: 1.8rem;
+	line-height: 1.5;
+}
+
+h5, .h5 {
+	font-size: 1.6rem;
+	line-height: 1.5;
+}
+
+h6, .h6 {
+	font-size: 1.4rem;
+	line-height: 1.5;
+}

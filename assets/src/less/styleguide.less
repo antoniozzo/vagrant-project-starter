@@ -1,0 +1,171 @@
+@styleGuideColor : #333344;
+
+.prettyprint {
+	font-family: Menlo, 'Bitstream Vera Sans Mono', 'DejaVu Sans Mono', Monaco, Consolas, monospace;
+	font-size: 12px;
+	line-height: 1.5;
+}
+
+.pln { color: #cccccc; }
+.str { color: #99cc99; }
+.kwd { color: #cc99cc; }
+.com { color: #999999; }
+.typ { color: #6699cc; }
+.lit { color: #f99157; }
+.pun { color: #cccccc; }
+.opn { color: #cccccc; }
+.clo { color: #cccccc; }
+.tag { color: #f2777a; }
+.atn { color: #f99157; }
+.atv { color: #66cccc; }
+.dec { color: #f99157; }
+.var { color: #f2777a; }
+.fun { color: #6699cc; }
+
+#style_menu {
+	width: 220px;
+	position: fixed;
+	z-index: 9;
+	top: 0;
+	bottom: 0;
+	left: 0;
+
+	background-color: @styleGuideColor;
+
+	overflow: auto;
+}
+
+#style_main {
+	position: fixed;
+	z-index: 4;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 220px;
+	padding: 2%;
+
+	overflow: auto;
+}
+
+.style_nav {
+	margin: 0;
+	padding: 10px 0;
+	position: relative;
+
+	list-style: none;
+	text-align: left;
+
+	a {
+		display: block;
+		padding: 2px 20px;
+		width: 100%;
+
+		color: fade(#fff, 60%);
+		font-weight: 400;
+		font-size: 11px;
+		line-height: 26px;
+		text-align: left;
+		text-transform: uppercase;
+		text-decoration: none;
+
+		vertical-align: middle;
+
+		&:hover {
+			color: #fff;
+		}
+	}
+
+	span {
+		float: right;
+	}
+}
+
+.style_nav-sub {
+	background-color: darken(@styleGuideColor, 10%);
+
+	a:first-child {
+		padding-top: 10px;
+	}
+
+	a:last-child {
+		padding-bottom: 10px;
+	}
+}
+
+.style_section {
+	margin-bottom: 30px;
+}
+
+.style_content {
+	margin-bottom: 20px;
+}
+
+.style_modifiers {
+	.clearfix();
+	padding: 30px;
+	margin-bottom: 20px;
+
+	.border-radius(6px);
+	background-color: #fff;
+
+	overflow: hidden;
+}
+
+.style_modifiers-heading {
+	margin: -30px -30px 30px;
+	padding: 10px 30px;
+	background-color: @styleGuideColor;
+
+	font-size: 10px;
+	font-weight: 400;
+	letter-spacing: .1em;
+	text-transform: uppercase;
+	color: #fff;
+}
+
+.style_modifier-name {
+	margin: 0 -30px 10px;
+	padding: 10px 30px;
+	border-top: 1px solid fade(@styleGuideColor, 40%);
+
+	font-size: 10px;
+	font-weight: 400;
+	letter-spacing: .1em;
+	text-transform: uppercase;
+
+	.style_modifiers-heading + & {
+		margin-top: -30px;
+	}
+}
+
+.style_modifier-example {
+	margin-bottom: 30px;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+.style_markup {
+	.clearfix();
+	padding: 30px;
+
+	.border-radius(6px);
+	background-color: darken(@styleGuideColor, 10%);
+}
+
+.style_parameters-name {
+	color: darken(@styleGuideColor, 10%);
+	font-weight: 600;
+}
+
+.style_layout-example {
+	> * {
+		line-height: 3rem;
+
+		background-color: lighten(@styleGuideColor, 20%);
+		background-clip: content-box;
+
+		color: #fff;
+	}
+}

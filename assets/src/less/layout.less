@@ -1,0 +1,279 @@
+/*
+Table layout helper
+
+Markup:
+<div class="lay lay--fixed lay--center lay--s style_layout-example">
+	<div>33.33%</div>
+	<div>33.33%</div>
+	<div>33.33%</div>
+</div>
+<div class="lay lay--fixed lay--center lay--s style_layout-example">
+	<div class="lay--w20">20%</div>
+	<div>35%</div>
+	<div>35%</div>
+	<div class="lay--w10">10%</div>
+</div>
+<div class="lay lay--fixed lay--s style_layout-example">
+	<div class="lay--left">Left</div>
+	<div class="lay--center">Center</div>
+	<div class="lay--right">Right</div>
+</div>
+
+Styleguide layout.table
+*/
+
+/*
+Padding
+
+.lay--s - Small padding
+.lay--m - Medium padding
+.lay--l - Large padding
+
+Markup:
+<div class="lay lay--fixed lay--center {{modifier_class}} style_layout-example">
+	<div>33.33%</div>
+	<div>33.33%</div>
+	<div>33.33%</div>
+</div>
+
+Styleguide layout.table.padding
+*/
+
+/*
+Horizontal content alignment
+
+.lay--left - Content left
+.lay--center - Content center
+.lay--right - Content right
+
+Markup:
+<div class="lay lay--fixed lay--s {{modifier_class}} style_layout-example">
+	<div class="{{modifier_class}}">33.33%</div>
+	<div class="{{modifier_class}}">33.33%</div>
+	<div class="{{modifier_class}}">33.33%</div>
+</div>
+
+Styleguide layout.table.horizontal
+*/
+
+/*
+Vertical content alignment
+
+.lay--top - Align top
+.lay--middle - Align middle
+.lay--bottom - Align bottom
+
+Markup:
+<div class="lay lay--fixed lay--s {{modifier_class}} style_layout-example">
+	<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+	<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe nam, inventore iste odio! Qui ad cumque quas possimus fugit iusto fugiat adipisci itaque quidem vero dolorem accusantium, illo delectus corporis.</div>
+	<div>Lorem ipsum dolor sit amet.</div>
+</div>
+
+Styleguide layout.table.vertical
+*/
+
+.lay--spacing(@spacing) {
+	@spacingHalf : @spacing / 2;
+
+	.calc(width, ~'100% + @{spacing}');
+	.calc(margin-left, ~'-@{spacingHalf}');
+
+	+ .lay {
+		padding-top: @spacing;
+	}
+
+	> * + * {
+		padding-left: @spacing;
+	}
+
+	> * {
+		.calc(padding-left, ~'@{spacingHalf}');
+		.calc(padding-right, ~'@{spacingHalf}');
+	}
+}
+
+.lay--copy() {
+	display: table;
+	width: 100%;
+
+	> * {
+		display: table-cell;
+
+		vertical-align: inherit;
+		text-align: inherit;
+
+		> * {
+			word-break: break-word;
+		}
+	}
+	
+	// Variants
+	
+	&.lay--fixed {
+		table-layout: fixed;
+	}
+
+	// Spacing
+	
+	&.lay--s {
+		.lay--spacing(1rem);
+	}
+	
+	&.lay--m {
+		.lay--spacing(2rem);
+	}
+	
+	&.lay--l {
+		.lay--spacing(3rem);
+	}
+
+	// Rows + Spacing
+
+	&.lay--rows {
+		> * {
+			display: table-row;
+
+			> * {
+				display: table-cell;
+
+				> * {
+					word-break: break-word;
+				}
+			}
+		}
+
+		&.lay--s {
+			> * + * > * {
+				padding-top: 1rem;
+			}
+
+			> * > * + * {
+				padding-left: 1rem;
+			}
+
+			> * > * {
+				.calc(padding-left, ~'.5rem');
+				.calc(padding-right, ~'.5rem');
+			}
+		}
+		
+		&.lay--m {
+			> * + * > * {
+				padding-top: 2rem;
+			}
+
+			> * > * + * {
+				padding-left: 2rem;
+			}
+
+			> * > * {
+				.calc(padding-left, ~'1rem');
+				.calc(padding-right, ~'1rem');
+			}
+		}
+		
+		&.lay--l {
+			> * + * > * {
+				padding-top: 3rem;
+			}
+
+			> * > * + * {
+				padding-left: 3rem;
+			}
+
+			> * > * {
+				.calc(padding-left, ~'1.5rem');
+				.calc(padding-right, ~'1.5rem');
+			}
+		}
+	}
+
+	// Vertical Aligning
+	
+	&.lay--top {
+		vertical-align: top;
+	}
+	
+	&.lay--middle {
+		vertical-align: middle;
+	}
+	
+	&.lay--bottom {
+		vertical-align: bottom;
+	}
+
+	// Text Aligning
+	
+	&.lay--left, .lay--left {
+		text-align: left;
+	}
+	
+	&.lay--right, .lay--right {
+		text-align: right;
+	}
+	
+	&.lay--center, .lay--center {
+		text-align: center;
+	}
+
+	// Widths
+	
+	.lay--w0  { width: 0; }
+	.lay--w10 { width: 10%; }
+	.lay--w20 { width: 20%; }
+	.lay--w30 { width: 30%; }
+	.lay--w40 { width: 40%; }
+	.lay--w50 { width: 50%; }
+	.lay--w60 { width: 60%; }
+	.lay--w70 { width: 70%; }
+	.lay--w80 { width: 80%; }
+	.lay--w90 { width: 90%; }
+}
+
+.lay {
+	&.lay--s + .lay,
+	&.lay--s > * + * {
+		padding-top: 1rem;
+	}
+
+	&.lay--m + .lay,
+	&.lay--m > * + * {
+		padding-top: 2rem;
+	}
+
+	&.lay--l+ .lay,
+	&.lay--l > * + * {
+		padding-top: 3rem;
+	}
+
+	@media @mobile {
+		&:not(.lay--off_mobile) {
+			> * + * {
+				padding-top: 0;
+			}
+
+			.lay--copy();
+		}
+	}
+
+	@media @tablet {
+		&:not(.lay--off_tablet) {
+			> * + * {
+				padding-top: 0;
+			}
+
+			.lay--copy();
+		}
+	}
+
+	@media @desktopUp {
+		&:not(.lay--off_desktop) {
+			> * + * {
+				padding-top: 0;
+			}
+
+			.lay--copy();
+		}
+	}
+}

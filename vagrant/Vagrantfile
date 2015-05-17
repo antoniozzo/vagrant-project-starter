@@ -1,0 +1,99 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+name       = "[name]"
+boxName    = "[boxName]"
+boxUrl     = "[boxUrl]"
+syncDir    = "[syncDir]"
+memory     = "[memory]"
+ip         = "[ip]"
+vhost      = "[vhost]"
+git        = "[git]"
+node       = "[node]"
+php        = "[php]"
+pubDir     = "[pubDir]"
+composer   = "[composer]"
+mysql      = "[mysql]"
+dbName     = "[dbName]"
+dbPass     = "[dbPass]"
+apachePort = "[apachePort]"
+mysqlPort  = "[mysqlPort]"
+sshPort    = "[sshPort]"
+
+Vagrant.configure("2") do |config|
+	config.vm.define :"#{name}" do |config|
+		config.vm.box      = boxName
+		config.vm.box_url  = boxUrl
+		config.vm.hostname = name
+		config.vm.synced_folder "./", "#{syncDir}", :mount_options => ["dmode=777", "fmode=666"]
+
+		config.vm.provider :virtualbox do |v|
+			v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+			v.customize ["modifyvm", :id, "--memory", memory]
+		end
+
+		if ip
+			config.vm.network :private_network, ip: "#{ip}"
+		end
+
+		if apachePort != ""
+			config.vm.network :forwarded_port, guest: 80, host: apachePort, auto_correct: true
+		end
+
+		if mysqlPort != ""
+			config.vm.network :forwarded_port, guest: 3306, host: mysqlPort, auto_correct: true
+		end
+
+		if sshPort != ""
+			config.vm.network :forwarded_port, guest: 22, host: sshPort, auto_correct: true
+		end
+
+		config.vm.provision :shell do |s|
+			s.path = "provision/server/install.sh"
+		end
+
+		# GIT
+		if git == "1"
+			config.vm.provision :shell do |s|
+				s.path = "provision/git/install.sh"
+				s.args = "#{syncDir}"
+			end
+		end
+
+		# NodeJS
+		if node == "1"
+			config.vm.provision :shell do |s|
+				s.path = "provision/node/install.sh"
+			end
+		end
+
+		# PHP
+		if php == "1"
+			config.vm.provision :shell do |s|
+				s.path = "provision/php/install.sh"
+				s.args = "#{pubDir} ${vhost}"
+			end
+
+			# Composer
+			if composer == "1"
+				config.vm.provision :shell do |s|
+					s.path = "provision/composer/install.sh"
+					s.args = "#{name} #{pubDir}"
+				end
+			end
+		end
+
+		# MySql
+		if mysql == "1"
+			config.vm.provision :shell do |s|
+				s.path = "provision/mysql/install.sh"
+				s.args = "#{dbName} #{dbPass} #{php}"
+			end
+		end
+
+		config.vm.provision :shell do |s|
+			s.path = "provision/server/boot.sh"
+			s.args = "#{syncDir}"
+		end
+	end
+end

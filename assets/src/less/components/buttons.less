@@ -1,0 +1,131 @@
+/*
+Default buttons
+
+.btn--red  - Red button
+.btn--blue - Blue button
+
+Markup:
+<button class="btn {{modifier_class}}">Click me</button>
+<button class="btn {{modifier_class}}" disabled>Disabled</button>
+
+Styleguide buttons.default
+ */
+
+
+/*
+Primary buttons
+
+.btn--red  - Red button
+.btn--blue - Blue button
+
+Markup:
+<button class="btn btn--primary {{modifier_class}}">Click me</button>
+<button class="btn btn--primary {{modifier_class}}" disabled>Disabled</button>
+
+Styleguide buttons.primary
+ */
+
+
+/*
+Secondary buttons
+
+.btn--red  - Red button
+.btn--blue - Blue button
+
+Markup:
+<button class="btn btn--secondary {{modifier_class}}">Click me</button>
+<button class="btn btn--secondary {{modifier_class}}" disabled>Disabled</button>
+
+Styleguide buttons.secondary
+ */
+
+.btn {
+	display: inline-block;
+	height: 3.8rem;
+	padding: .9rem 2.4rem;
+	position: relative;
+
+	border-radius: 3px;
+	border: 1px solid #666;
+	outline: 0;
+
+	.background-clip(padding-box);
+	background-color: transparent;
+
+	color: #666;
+	font-size: 1.2rem;
+	font-weight: 600;
+	line-height: 1.8rem;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	vertical-align: middle;
+	white-space: nowrap;
+
+	.transition(all .2s ease);
+	cursor: pointer;
+
+	// Variations
+
+	&.btn--primary {
+		height: 5rem;
+		padding-left: 2.4rem;
+		padding-right: 2.4rem;
+
+		line-height: 3.2rem;
+	}
+
+	&.btn--secondary {
+		height: 3rem;
+		padding: .5rem 3rem;
+
+		.border-radius(2rem);
+	}
+
+	// Behaviours
+
+	&.btn--block {
+		display: block;
+		padding-right: 0;
+		padding-left: 0;
+		width: 100%;
+	}
+
+	&.btn--block_mobile {
+		@media @mobile {
+			.btn--block;
+		}
+	}
+
+	// Colors
+
+	.colorize(@color) {
+		background-color: @color;
+
+		border: 0;
+
+		color: #fff;
+		
+		&:not([disabled]) {
+			&:hover {
+				background-color: spin(lighten(@color, 10%), 5%);
+			}
+
+			&:active {
+				background-color: spin(darken(@color, 10%), -5%);
+			}
+		}
+
+		&[disabled] {
+			.opacity(.5);
+		}
+	}
+
+	&.btn--red {
+		.colorize(@swatchRed);
+	}
+
+	&.btn--blue {
+		.colorize(@swatchBlue);
+	}
+}
