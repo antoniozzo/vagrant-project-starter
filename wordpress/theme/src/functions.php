@@ -1,29 +1,25 @@
-<?php
-// Exit if accessed directly
+<?php 
+namespace OWC;
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-function owc_is_local_env() {
-	if ( defined( 'OWC_ENVIRONMENT' ) && OWC_ENVIRONMENT === 'local' ) {
-		return true;
-
-	return false;
+function is_env( $env ) {
+	return ( defined( 'OWC_ENVIRONMENT' ) && OWC_ENVIRONMENT === $env );
 }
 
-function owc_get_theme_version() {
-	$my_theme = wp_get_theme();
-
-	return $my_theme->get( 'Version' );
+function get_theme_version() {
+	return wp_get_theme()->get( 'Version' );
 }
 
-function owc_theme_version() {
-	echo owc_get_theme_version();
+function theme_version() {
+	echo get_theme_version();
 }
 
-function owc_asset_rev( $filename ) {
+function asset_rev( $filename ) {
 	// see comments below
 	$manifest_path = get_stylesheet_directory() . '/assets/dist/rev-manifest.json';
 
-	if ( ! owc_is_local_env() && file_exists( $manifest_path ) ) {
+	if ( ! is_local_env() && file_exists( $manifest_path ) ) {
 		// retrieve revisioned file for production server
 		$manifest = json_decode( file_get_contents( $manifest_path ), true );
 
@@ -36,7 +32,7 @@ function owc_asset_rev( $filename ) {
 	}
 }
 
-function owc_svg_link( $id, $args = '' ) {
+function svg( $id, $args = '' ) {
 	$defaults = array(
 		'title'  => '',
 		'class'  => 'icon',

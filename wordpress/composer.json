@@ -12,7 +12,10 @@
 	},
 	"autoload": {
 		"classmap": [
-			"wp-content/plugins"
-		]
+			"wp-content"
+		],
+		"psr-0": {
+			"OWC": "wp-content/themes/[name]/src/"
+		}
 	}
 }
