@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <section>
-	<?php while( have_posts() ) : the_post(); ?>
+	<?php while ( have_posts() ) : the_post(); ?>
 
 		<article>
 			<?php the_post_thumbnail( 'full' ); ?>

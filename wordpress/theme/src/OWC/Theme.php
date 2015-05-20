@@ -1,6 +1,8 @@
 <?php
 namespace OWC;
 
+use Oakwood\AbstractTheme;
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class Theme extends AbstractTheme {
@@ -18,7 +20,7 @@ class Theme extends AbstractTheme {
 	}
 
 	public function get_actions( $actions = array() ) {
-		// $actions['my_action'] => 'my_action';
+		$actions['body_prepend'] => 'svg_sprite';
 		
 		return $actions;
 	}
@@ -39,6 +41,16 @@ class Theme extends AbstractTheme {
 		// $scripts['my_js'] => 'path/to/my/js';
 		
 		return $scripts;
+	}
+
+	/*
+	|--------------------------------------------------------------------------
+	| ACTIONS
+	|--------------------------------------------------------------------------
+	*/
+
+	function svg_sprite() {
+		include_once( get_stylesheet_directory_uri() . '/assets/dist/img/sprite/main.svg' );
 	}
 
 }

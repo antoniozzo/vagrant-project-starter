@@ -1,25 +1,23 @@
-<?php 
-namespace OWC;
+<?php
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+function owc_body() {
+	do_action( 'owc_body' );
+}
+
+// Get the current environment:
+// local, staging, production
 function is_env( $env ) {
 	return ( defined( 'OWC_ENVIRONMENT' ) && OWC_ENVIRONMENT === $env );
 }
 
-function get_theme_version() {
-	return wp_get_theme()->get( 'Version' );
-}
-
-function theme_version() {
-	echo get_theme_version();
-}
-
+// Get a revision of a css or js file
 function asset_rev( $filename ) {
 	// see comments below
 	$manifest_path = get_stylesheet_directory() . '/assets/dist/rev-manifest.json';
 
-	if ( ! is_local_env() && file_exists( $manifest_path ) ) {
+	if ( ! is_env( 'local' ) && file_exists( $manifest_path ) ) {
 		// retrieve revisioned file for production server
 		$manifest = json_decode( file_get_contents( $manifest_path ), true );
 
@@ -32,7 +30,13 @@ function asset_rev( $filename ) {
 	}
 }
 
-function svg( $id, $args = '' ) {
+// Get the main svg sprite
+function svg_sprite( $id = 'main' ) {
+	include_once( get_stylesheet_directory_uri() . '/assets/dist/img/sprite/' . $id . '.svg' );
+}
+
+// Generate a svg hashed link
+function svg_link( $id, $args = '' ) {
 	$defaults = array(
 		'title'  => '',
 		'class'  => 'icon',
@@ -43,7 +47,7 @@ function svg( $id, $args = '' ) {
 	?>
 		<svg class="<?php echo $args->class; ?>" viewBox="0 0 <?php echo $args->width; ?> <?php echo $args->height; ?>">
 			<?php if ( $args->title ) echo '<title>' . $args->title . '</title>'; ?>
-			<use xlink:href="<?php echo get_stylesheet_directory_uri(); ?>/assets/dist/img/sprite/main.svg#<?php echo $id; ?>"></use>
+			<use xlink:href="#<?php echo $id; ?>"></use>
 		</svg>
 	<?php
 }

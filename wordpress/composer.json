@@ -3,19 +3,35 @@
 	"description": "",
 	"type": "project",
 	"minimum-stability": "stable",
+	"repositories": [
+		{
+			"type": "package",
+			"package": {
+				"name": "advanced-custom-fields/advanced-custom-fields-pro",
+				"version": "5.2",
+				"type": "wordpress-plugin",
+				"dist": {
+					"type": "zip",
+					"url": "http://connect.advancedcustomfields.com/index.php?p=pro&a=download&k=b3JkZXJfaWQ9NDI2MTN8dHlwZT1kZXZlbG9wZXJ8ZGF0ZT0yMDE0LTEwLTIyIDA5OjEwOjA2"
+				}
+			}
+		}
+	],
 	"require": {
 		"composer/installers": "~1.0",
-		"johnpbloch/wordpress": "4.*"
+		"johnpbloch/wordpress": "4.*",
+		"owc/wp-theme": "dev-master",
+		"advanced-custom-fields/advanced-custom-fields-pro": "~5.2"
 	},
 	"extra": {
 		"wordpress-install-dir": "wp"
 	},
 	"autoload": {
-		"classmap": [
-			"wp-content"
-		],
 		"psr-0": {
 			"OWC": "wp-content/themes/[name]/src/"
-		}
+		},
+		"files" : [
+			"wp-content/themes/[name]/src/functions.php"
+		]
 	}
 }

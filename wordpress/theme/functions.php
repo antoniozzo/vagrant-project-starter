@@ -5,13 +5,19 @@ define( 'OWC_PATH', dirname( __FILE__ ) );
 define( 'OWC_SRC', OWC_PATH . '/src' );
 define( 'PRE', 'owc' );
 
+// Init post types
+$book = new OWC\PostType\Book;
+
+// Init taxonomies
+$genre = new OWC\Taxonomy\Genre;
+
 // Load Admin
 if ( in_array( $GLOBALS['pagenow'], array( 'wp-login.php', 'wp-register.php' ) ) || is_admin() ) {
-	$OWC_Admin = new OWC\Admin();
+	$admin = new OWC\Admin;
 }
 
 // Run cron jobs
-$OWC_Cron = new OWC\Cron();
+$cron = new OWC\Cron;
 
 // Boot it up!
-$OWC_Theme = new OWC\Theme();
+$theme = new OWC\Theme;

@@ -20,6 +20,8 @@
 </head>
 <body <?php body_class(); ?>>
 
+	<?php OWC\Theme::body_prepend(); ?>
+
 	<header id="header">
 		<nav class="navigation">
 			<?php wp_nav_menu( array(
