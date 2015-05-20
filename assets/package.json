@@ -16,7 +16,7 @@
 		"gulp-rimraf": "*",
 		"gulp-shell": "*",
 		"gulp-sourcemaps": "*",
-		"gulp-svg-sprites": "*",
+		"gulp-svg-sprite": "*",
 		"gulp-svg2png": "*",
 		"gulp-svgmin": "*",
 		"gulp-uglify": "*",

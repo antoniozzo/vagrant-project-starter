@@ -115,7 +115,7 @@ assetDir=$(getValue $assetDir $ask "Enter asset dir")
 echo $workDir/$dir/tmp/
 mkdir -p $workDir/$dir/tmp/
 
-git clone https://github.com/antoniozzo/coding-with-love.git $workDir/$dir/tmp/
+git clone https://github.com/antoniozzo/vagrant-project-starter.git $workDir/$dir/tmp/
 cd $workDir/$dir/
 shopt -s dotglob
 

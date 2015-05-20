@@ -14,7 +14,7 @@ var config      = require('./gulpconfig.json'),
 	minifycss   = require('gulp-minify-css'),
 	sourcemaps  = require('gulp-sourcemaps'),
 	browserSync = require('browser-sync'),
-	svg         = require('gulp-svg-sprites'),
+	svg         = require('gulp-svg-sprite'),
 	clean       = require('gulp-rimraf'),
 	rev         = require('gulp-rev'),
 	shell       = require('gulp-shell'),
@@ -97,10 +97,11 @@ gulp.task('svg', function() {
 		.pipe(plumber({errorHandler: onError}))
 		.pipe(gulp.dest(config.svg.dist))
 		.pipe(svg({
-			mode    : "symbols",
-			preview : false,
-			svg     : {
-				symbols : config.svg.id + '.svg'
+			mode : {
+				symbol : {
+					dest   : '.',
+					sprite : config.svg.id + '.svg'
+				}
 			}
 		}))
 		.pipe(gulp.dest(config.svg.dist + '/sprite'));
