@@ -31,7 +31,7 @@
 			"OWC": "wp-content/themes/[name]/src/"
 		},
 		"files" : [
-			"wp-content/themes/[name]/src/functions.php"
+			"wp-content/themes/[name]/src/helpers.php"
 		]
 	}
 }

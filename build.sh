@@ -148,11 +148,12 @@ rm -rf tmp/
 
 if [ ! -z $ip -a ! -z $vhost ]; then
 	echo "Will create a vhost in /etc/hosts, please provide password"
-	sudo bash -c "echo -e '${ip}\t${vhost}' >> /etc/hosts"
+	sudo bash -c "echo -e '\n${ip}\t${vhost}' >> /etc/hosts"
 fi
 
 if [ $vagrant == 1 ]; then
 	vagrant up
 	echo -e "\n\nYour project is running at http://${vhost}\n\n"
+	open -a /Applications/Google\ Chrome.app http://$vhost
 	open -a /Applications/Google\ Chrome.app http://$vhost/$assetDir/dist/styleguide
 fi
