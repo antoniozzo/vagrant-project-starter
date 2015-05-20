@@ -71,7 +71,7 @@ Vagrant.configure("2") do |config|
 		if php == "1"
 			config.vm.provision :shell do |s|
 				s.path = "provision/php/install.sh"
-				s.args = "#{pubDir} ${vhost}"
+				s.args = "#{pubDir} #{vhost}"
 			end
 
 			# Composer
