@@ -5,8 +5,10 @@ use Oakwood\AbstractTaxonomy;
 
 class Genre extends AbstractTaxonomy {
 
-	public $type = 'genre';
+	protected $type = 'genre';
 
-	public $post_types = array( 'book' );
+	protected $post_types = array( 'book' );
+
+	public $label = 'Genre';
 
 }

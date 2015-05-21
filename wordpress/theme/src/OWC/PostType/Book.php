@@ -5,6 +5,8 @@ use Oakwood\AbstractPostType;
 
 class Book extends AbstractPostType {
 
-	public $type = 'book';
+	protected $type = 'book';
+
+	public $label = 'Book';
 
 }

@@ -14,31 +14,36 @@ class Theme extends AbstractTheme {
 	*/
 
 	public function get_filters( $filters = array() ) {
-		// $filters['my_filter'] => 'my_filter';
+		// $filters['my_filter'] = 'my_filter';
 		
 		return $filters;
 	}
 
 	public function get_actions( $actions = array() ) {
-		$actions['body_prepend'] => 'svg_sprite';
+		$actions['body_prepend'] = 'svg_sprite';
 		
 		return $actions;
 	}
 
 	public function get_widgets( $widgets = array() ) {
-		// $widgets['MyWidget'] => true;
+		// $widgets['MyWidget'] = true;
 		
 		return $widgets;
 	}
 
 	public function get_styles( $styles = array() ) {
-		// $styles['my_css'] => 'path/to/my/css';
+		$styles['main-css'] = get_stylesheet_directory_uri() . '/assets/dist/' . asset_rev( 'css/main.css' );
 		
 		return $styles;
 	}
 
 	public function get_scripts( $scripts = array() ) {
-		// $scripts['my_js'] => 'path/to/my/js';
+		$scripts['main-js'] = array(
+			get_stylesheet_directory_uri() . '/assets/dist/' . asset_rev( 'js/main.js' ),
+			array( 'jquery' ),
+			false,
+			true
+		);
 		
 		return $scripts;
 	}
