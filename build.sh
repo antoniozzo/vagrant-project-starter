@@ -140,6 +140,7 @@ if [ $gulp == 1 ]; then
 	mv $workDir/$dir/tmp/assets/* ./
 	insert package.json "\[name\]" $name
 	insert bower.json "\[name\]" $name
+	insert gulpconfig.json "\[vhost\]" $vhost
 	sudo npm i; bower install; gulp build
 	cd $workDir/$dir/
 fi
